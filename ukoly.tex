@@ -81,6 +81,8 @@
 \newcommand{\e}[1]{\const{e}^{#1}}
 \renewcommand{\i}{\const{i}}
 
+\newcommand*\Laplace{\mathop{}\!\mathbin\bigtriangleup}
+
 \begin{document}
 
 \title{Kvantová mechanika I: Zápočtová písemka}
@@ -91,10 +93,122 @@
 
 \section{Mionium v křemíku}
 
+
+
 \section{Kvadratický Hamiltonián}
+\subsection{Zadání}
+Pohyb částice je popsán Hamiltoniánem
+\begin{align*}
+    \hat{H}
+    = \hat{p}^4
+    + \hat{p}^2 \hat{x}^2
+    + \hat{x}^2 \hat{p}^2
+    + \hat{x}^4,
+    \hspace{2em}
+    \comm{\hat{x}}{\hat{p}} = \i.
+\end{align*}
+Určete možné energie $E_n$ této částice a jim odpovídající vlastní stavy $\ket{n}$. Vypočtěte střední hodnotu operátoru souřadnice v čase $t$, pokud je systém na počátku v čase $t=0$ ve stavu
+\begin{align*}
+    \ket{\psi} =
+    \frac{1}{\oldsqrt{2}}
+    \left( \ket{n} + \ket{n+1} \right).
+\end{align*}
+
+\subsection{Řešení}
+Ze cvičení víme, že Hamiltonián harmonického oscilátoru je pro $M=\frac{1}{2}, \; \Omega = 1, \; \hbar = 1$ ve tvaru
+\begin{align*}
+    \hat{H}_\textit{harm.} = \hat{p}^2 + \hat{x}^2
+\end{align*}
+si můžeme vyjádřit jako
+\begin{gather*}
+    \hat{H}_\textit{harm.} = \hat{n} + \frac{1}{2},
+    \\[5pt]
+    \hat{n} = \hat{a}^\dagger \hat{a},
+    \hspace{1em}
+    \hat{n} \ket{n} =  n \ket{n}
+    \;\; \forall n \in \mathbb{N}_0,
+    \\[5pt]
+    \hat{x} = \hat{a}^\dagger + \hat{a},
+    \hspace{2em}
+    \hat{p} = \i \left( \hat{a}^\dagger - \hat{a} \right),
+    \\[5pt]
+    \hat{a} \ket{n} = \sqrt{n} \ket{n-1},
+    \\[5pt]
+    \hat{a}^\dagger \ket{n} = \sqrt{n+1} \ket{n+1}.
+\end{gather*}
+Pro náš kvadratický Hamiltonián zjevně platí
+\begin{align*}
+    \hat{H}
+    &= \hat{p}^4
+    + \hat{p}^2 \hat{x}^2
+    + \hat{x}^2 \hat{p}^2
+    + \hat{x}^4,
+    \\[5pt]
+    &= \left( \hat{p}^2 + \hat{x}^2 \right)^2 \\[5pt]
+    &= \left( \hat{n} + \frac{1}{2} \right)^2 \\[5pt]
+    &= \hat{n}^2 + \hat{n} + \frac{1}{2}.
+\end{align*}
+Jeho vlastní stavy budou tedy $\ket{n}$, stejné jako vlastní stavy harmonického oscilátoru, a jim příslušící vlastní energie budou
+\begin{gather*}
+    E_n \ket{n}
+    = \hat{H} \ket{n}
+    = \left( \hat{n}^2 + \hat{n} + \frac{1}{2} \right) \ket{n}
+    = \left( n^2 + n + \frac{1}{2} \right) \ket{n}.
+    \\[15pt]
+    E_n = n^2 + n + \frac{1}{2}.
+\end{gather*}
+
+
+Nakonec nás zajímá časový vývoj stavu $\ket{\psi(t)}$ s počáteční podmínkou
+\begin{align*}
+    \ket{\psi(0)} =
+    \frac{1}{\oldsqrt{2}}
+    \left( \ket{n} + \ket{n+1} \right).
+\end{align*}
+Víme, že pro časový vývoj obecného stavu platí (při $\hbar = 1$)
+\begin{align*}
+    \ket{\psi(t)} = \e{-\i \hat{H} t} \ket{\psi(0)}.
+\end{align*}
+S použitím Sylvestrovy formule pro rozklad operátorové funkce pomocí vlastních stavů dostaneme
+\begin{align*}
+    \ket{\psi(t)} &= \sum_m \e{-\i E_m t} \hat{\const{P}}_{E_m} \ket{\psi(0)} = \frac{1}{\oldsqrt{2}} \left(\e{-\i E_n t} \ket{n} + \e{-\i E_{n+1} t} \ket{n+1}\right),
+    \\[10pt]
+    \ket{\psi(t)} &= \frac{1}{\oldsqrt{2}} \e{-\i t \left(n^{2} + n + \frac{1}{2}\right)} \left(\ket{n} + \e{-2 \i t \left(n + 1\right)} \ket{n+1}\right).
+\end{align*}
+Střední hodnota operátoru souřadnice $\hat{x}$ potom bude
+\begin{align*}
+    \bra{\psi(t)} \; \hat{x} \; \ket{\psi(t)}
+    &= \left(\bra{n} + \e{2 \i t \left(n + 1\right)} \bra{n+1}\right) \; \hat{x} \; \left(\ket{n} + \e{-2 \i t \left(n + 1\right)} \ket{n+1}\right)
+    \\[5pt]
+    &= \e{2 \i t \left(n + 1\right)} {\left\langle n + 1\right|} \hat{x} \ket{n} + {\left\langle n\right|} \hat{x} \ket{n} + {\left\langle n + 1\right|} \hat{x} \ket{n+1} + \e{- 2 \i t \left(n + 1\right)} {\left\langle n\right|} \hat{x} \ket{n+1}
+    \\[5pt]
+    &= \e{2 \i t \left(n + 1\right)} {\left\langle n + 1\right|} \left(\hat{a}^{\dagger} + \hat{a}\right) \ket{n} + {\left\langle n\right|} \left(\hat{a}^{\dagger} + \hat{a}\right) \ket{n} + {\left\langle n + 1\right|} \left(\hat{a}^{\dagger} + \hat{a}\right) \ket{n+1} + \e{- 2 \i t \left(n + 1\right)} {\left\langle n\right|} \left(\hat{a}^{\dagger} + \hat{a}\right) \ket{n+1}
+    \\[5pt]
+    &= \sqrt{n + 1} \e{2 \i t} \e{2 \i n t} + \sqrt{n + 1} \e{- 2 \i t} \e{- 2 \i n t}
+    \\[5pt]
+    &= 2 \sqrt{n + 1} \cos{\left(2 t \left(n + 1\right) \right)}.
+\end{align*}
+Použil jsem vyjádření $\hat{x}$ pomocí posunovacích operátorů a následné zjednodušení pomocí knihovny SymPy.
+
+
+
 
 \section{Třírozměrná \texorpdfstring{$\delta$}{δ} jáma}
 
+\section{Zadání}
+Částice se pohybuje v třírozměrném přitažlivém potenciálu
+\begin{align*}
+    V(x,y,z) = - a \delta(x) - b \delta(y) - c \delta(z),
+    \hspace{2em}
+    a,b,c \; > \; 0.
+\end{align*}
+Nalezněte energie všech vázaných stavů a jim odpovídající normované vlnové funkce. Pro nejnižší vázaný stav ověřte, že splňuje relace neurčitosti.
+
+\section{Řešení}
+Odpovídající Hamiltonián je pro $M = \frac{1}{2}, \; \Omega = 1, \; \hbar = 1$
+\begin{align*}
+    \hat{H} = \hat{p}^2 + \hat{V} = -\Laplace - a \delta(x) - b \delta(y) - c \delta(z)
+\end{align*}
 
 
 
