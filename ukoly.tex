@@ -135,26 +135,78 @@ Přímým dosazením do rovnice Hamiltoniánu tedy dostaneme:
 \end{align*}
 Diagonalizujeme-li $H$, získáme
 \begin{gather*}
-    H = V^{-1} H_\textit{diag.} V
+    H = R^{-1} H_\textit{diag.} R
     \\[10pt]
-    V = \mat{0 & - \nicefrac{\oldsqrt{2}}{2} & \nicefrac{\oldsqrt{2}}{2} & 0\\0 & \nicefrac{\oldsqrt{2}}{2} & \nicefrac{\oldsqrt{2}}{2} & 0\\1 & 0 & 0 & 0\\0 & 0 & 0 & 1}
+    R = \mat{0 & - \nicefrac{\oldsqrt{2}}{2} & \nicefrac{\oldsqrt{2}}{2} & 0\\0 & \nicefrac{\oldsqrt{2}}{2} & \nicefrac{\oldsqrt{2}}{2} & 0\\1 & 0 & 0 & 0\\0 & 0 & 0 & 1}
     \\[10pt]
     H_\textit{diag.} = \mat{- \frac{3 A}{4} - \frac{D}{4} - \frac{\alpha^{2} c^{2} m_{r}}{2} & 0 & 0 & 0\\0 & \frac{A}{4} - \frac{D}{4} - \frac{\alpha^{2} c^{2} m_{r}}{2} & 0 & 0\\0 & 0 & \frac{A}{4} + \frac{D}{4} - \frac{\alpha^{2} c^{2} m_{r}}{2} & 0\\0 & 0 & 0 & \frac{A}{4} + \frac{D}{4} - \frac{\alpha^{2} c^{2} m_{r}}{2}}
 \end{gather*}
-Na diagonále $H_\textit{diag}$ jsou energie vázaných stavů Hamiltoniánu, sloupce $V$ jsou jim odpovídající stavové vektory~${\ket{\psi_\mu} \otimes \ket{\psi_e}}$.
+Na diagonále $H_\textit{diag}$ jsou energie vázaných stavů Hamiltoniánu, sloupce $R$ jsou jim odpovídající stavové vektory~${\ket{\psi_\mu} \otimes \ket{\psi_e}}$.
 
 Jako podúkol máme vyjádřit $\ket{\rightarrow}^{(\mu)}$ v bázi $\{ \ket{\uparrow}^{(\mu)}, \ket{\downarrow}^{(\mu)} \}$. Ze cvičení víme, že těmito \textit{kety} se označují vlastní vektory Pauliho matic:
 \begin{align*}
-    \ket{\rightarrow}^{(\mu)} = \frac{1}{\oldsqrt{2}} \mat{1 \\ 1},
+    \ket{\rightarrow} = \frac{1}{\oldsqrt{2}} \mat{1 \\ 1},
     \hspace{2em}
-    \ket{\uparrow}^{(\mu)} = \mat{1 \\ 0},
+    \ket{\uparrow} = \mat{1 \\ 0},
     \hspace{2em}
-    \ket{\downarrow}^{(\mu)} = \mat{0 \\ 1}.
+    \ket{\downarrow} = \mat{0 \\ 1}.
 \end{align*}
 Vyjádření $\ket{\rightarrow}^{(\mu)}$ v bázi $\{ \ket{\uparrow}^{(\mu)}, \ket{\downarrow}^{(\mu)} \}$ je tedy zřejmě:
 \begin{align*}
-    \ket{\rightarrow}^{(\mu)} = \frac{1}{\oldsqrt{2}} \left(\ket{\uparrow}^{(\mu)} + \ket{\downarrow}^{(\mu)} \right)
+    \ket{\rightarrow}^{(\mu)} = \frac{1}{\oldsqrt{2}} \left(\ket{\uparrow}^{(\mu)} + \ket{\downarrow}^{(\mu)} \right).
 \end{align*}
+
+Dále předpokládáme, že v čase $t=0$ je spin elektronu $\ket{\psi}^{(e)} = \ket{\uparrow}^{(e)}$, zatímco spin mionu je v obecném stavu:
+\begin{gather*}
+    \ket{\psi(0)}^{(e)} = \mat{1 \\ 0},
+    \hspace{2em}
+    \ket{\psi(0)}^{(\mu)} = \mat{a \\ b},
+    \\[10pt]
+    \ket{\psi(0)} = \ket{\psi(0)}^{(e)} \otimes \ket{\psi(0)}^{(\mu)}
+    = \mat{a \\ 0 \\ b \\ 0}.
+\end{gather*}
+Vyjádříme-li si tento vektor pomocí vlastních stavů Hamiltoniánu $\ket{n} = R_n$, dostaneme:
+\begin{align*}
+    \ket{\psi(0)} = \frac{a}{\oldsqrt{2}} \left( \; -\ket{2} + \ket{3} \; \right) + b \ket{1}.
+\end{align*}
+Víme, že pro časový vývoj obecného stavu platí:
+\begin{align*}
+    \ket{\psi(t)} = \e{-\i \hat{H} t/\hbar} \ket{\psi(0)}.
+\end{align*}
+S použitím Sylvestrovy formule pro rozklad operátorové funkce pomocí vlastních stavů dostaneme
+\begin{align*}
+    \ket{\psi(t)} &= \sum_m \e{-\i E_m t/\hbar} \hat{\const{P}}_{E_m} \ket{\psi(0)}
+    \\
+    &= b \e{-\i E_1 t/\hbar} \; \ket{1} \;\;\; - \frac{a}{\oldsqrt{2}} \e{-\i E_2 t/\hbar} \; \ket{2} \;\;\; + \frac{a}{\oldsqrt{2}} \e{-\i E_3 t} \; \ket{3},
+\end{align*}
+\begin{gather*}
+    \ket{\psi(t)} =
+    \e{-\i (A + D - 2  \alpha^2 c^2  m_r) t / 4\hbar}
+    \left(
+        b \e{ \i (2A + D) t / 2\hbar} \ket{1} +
+        \frac{a}{\oldsqrt{2}}
+        \left( -\e{\i D t / 2\hbar} \ket{2} + \ket{3} \right)
+    \right).
+\end{gather*}
+Nyní dosadíme zpět za vlastní vektory $\ket{n}$ a získáme:
+\begin{gather*}
+    \ket{\psi(t)}
+    =
+    \mat{\frac{a \left(e^{\frac{i D t}{2 \hbar}} + 1\right) e^{- \frac{i t \left(A + D - 2 \alpha^{2} c^{2} m_{r}\right)}{4 \hbar}}}{2}\\\frac{a \left(1 - e^{\frac{i D t}{2 \hbar}}\right) e^{- \frac{i t \left(A + D - 2 \alpha^{2} c^{2} m_{r}\right)}{4 \hbar}}}{2}\\b e^{\frac{i t \left(3 A + D + 2 \alpha^{2} c^{2} m_{r}\right)}{4 \hbar}}\\0}
+    =
+    \mat{
+        \psi_{\uparrow_\mu\uparrow_e}(t) \\[5pt]
+        \psi_{\uparrow_\mu\downarrow_e}(t) \\[5pt]
+        \psi_{\downarrow_\mu\uparrow_e}(t) \\[5pt]
+        \psi_{\downarrow_\mu\downarrow_e}(t)
+    }
+\end{gather*}
+Všimněme si, že první dvě složky obě odpovídají stavu, kdy je spin mionu ve směru $\uparrow$, platí tedy:
+\begin{align*}
+    P(\uparrow_\mu) = P(\uparrow_\mu \uparrow_e) + P(\uparrow_\mu \downarrow_e) = \int_{a,b} |\psi_{\uparrow_\mu\uparrow_e}(t)|^2 + |\psi_{\uparrow_\mu\downarrow_e}(t)|^2 \d{P},
+\end{align*}
+kde $\int_{a,b} \d{P}$ je integrál přes všechny možné počáteční hodnoty $a, b$, $a^2 + b^2 = 1$.
+
 
 
 \section{Kvadratický Hamiltonián}
