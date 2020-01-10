@@ -201,11 +201,26 @@ Nyní dosadíme zpět za vlastní vektory $\ket{n}$ a získáme:
         \psi_{\downarrow_\mu\downarrow_e}(t)
     }
 \end{gather*}
-Všimněme si, že první dvě složky obě odpovídají stavu, kdy je spin mionu ve směru $\uparrow$, platí tedy:
+Nás zajímá projekce $\psi(t)$ na $\ket{\rightarrow_\mu}$, projekční matice je:
 \begin{align*}
-    P(\uparrow_\mu) = P(\uparrow_\mu \uparrow_e) + P(\uparrow_\mu \downarrow_e) = \int_{a,b} |\psi_{\uparrow_\mu\uparrow_e}(t)|^2 + |\psi_{\uparrow_\mu\downarrow_e}(t)|^2 \d{P},
+    P_{\rightarrow_\mu}
+    &= \ket{\rightarrow_\mu} \bra{\rightarrow_\mu}
+    = \ket{\rightarrow\uparrow} \bra{\rightarrow\uparrow} +
+    \ket{\rightarrow\downarrow} \bra{\rightarrow\downarrow}
+    \\[10pt]
+    &=
+    \left( \frac{1}{\oldsqrt{2}} \mat{1 \\ 1 } \otimes \mat{1 \\ 0} \right)
+    \left( \frac{1}{\oldsqrt{2}} \mat{1 \\ 1 } \otimes \mat{1 \\ 0} \right)^T +
+    \left( \frac{1}{\oldsqrt{2}} \mat{1 \\ 1 } \otimes \mat{0 \\ 1} \right)
+    \left( \frac{1}{\oldsqrt{2}} \mat{1 \\ 1 } \otimes \mat{0 \\ 1} \right)^T
+    \\[10pt]
+    &= \mat{\nicefrac{1}{2} & 0 & \nicefrac{1}{2} & 0\\0 & \nicefrac{1}{2} & 0 & \nicefrac{1}{2}\\\nicefrac{1}{2} & 0 & \nicefrac{1}{2} & 0\\0 & \nicefrac{1}{2} & 0 & \nicefrac{1}{2}}
 \end{align*}
-kde $\int_{a,b} \d{P}$ je integrál přes všechny možné počáteční hodnoty $a, b$, $a^2 + b^2 = 1$.
+Pravděpodobnost, že v čase $t$ naměříme spin mionu  orientovaný ve směru „$\rightarrow$“ by potom měla být $p_{\rightarrow_\mu}(t) = \norm{ P_{\rightarrow_\mu} \ket{\psi(t)}}^2$. Po dosazení výrazů do SymPy mi vyšel tento výraz:
+\begin{align*}
+    p_{\rightarrow_\mu}(t) = \e{\frac{t \left(- \operatorname{im}{\left(\alpha^{2} c^{2} m_{r}\right)} + \operatorname{im}{\left(\overline{\alpha}^{2} \overline{c}^{2} \overline{m_{r}}\right)}\right)}{\hbar}} \left|{a e^{\frac{i D t}{2 \hbar}} \overline{b} + a e^{\frac{i D t}{\hbar}} \overline{b} + 2 a e^{\frac{i t \left(A + D\right)}{\hbar}} \overline{a} + 2 b e^{\frac{i t \left(A + D\right)}{\hbar}} \overline{b} + b e^{\frac{i t \left(2 A + D\right)}{\hbar}} \overline{a} + b e^{\frac{i t \left(2 A + \frac{3 D}{2}\right)}{\hbar}} \overline{a}}\right|^{2}.
+\end{align*}
+Je pravděpodobné, že pravděpodobnost buďto nezávisí na počátečním stavu mionu $(a, b)$, anebo alespoň mnohem jednodušším způsobem, nepodařilo se mi ale zjednodušit tvar rovnice, a to ani pomocí $a^2 + b^2 = 1$. Z nějakého důvodu program ignoroval i reálnost parametrů $\alpha, c, m_r$.
 
 
 
@@ -321,8 +336,17 @@ Nalezněte energie všech vázaných stavů a jim odpovídající normované vln
 \section{Řešení}
 Odpovídající Hamiltonián je pro $M = \frac{1}{2}, \; \Omega = 1, \; \hbar = 1$
 \begin{align*}
-    \hat{H} = \hat{p}^2 + \hat{V} = -\Laplace - a \delta(x) - b \delta(y) - c \delta(z)
+    \hat{H} = \hat{p}^2 + \hat{V} = -\Laplace - a \delta(x) - b \delta(y) - c \delta(z).
 \end{align*}
+Schrödingerova rovnice potom vede na parciální diferenciální rovnici
+\begin{align*}
+    E_n \psi &= \hat{H} \psi
+    \\
+    E_n \psi &= \left(\hat{p}^2 + \hat{V} = -\Laplace - a \delta(x) - b \delta(y) - c \delta(z)\right) \psi
+    \\
+    E_n \psi(x,y,z) + \Laplace\psi(x,y,z) &= -a \psi(0,y,z) \delta(x) -b \psi(x,0,z) \delta(y) -c \psi(x,y,0) \delta(z)
+\end{align*}
+Tento typ rovnice jsme si bohužel na Matematice pro Fyziky III. nezavedli, proto ho formálně neumím řešit.
 
 
 

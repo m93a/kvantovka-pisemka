@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2019.12.11)  10 JAN 2020 16:16
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2019.12.11)  10 JAN 2020 17:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -343,9 +343,9 @@ Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 Package: catchfile 2016/05/16 v1.7 Catch the contents of a file (HO)
 )
 \verbatim@out=\write4
-runsystem(touch w18-test-2020110976.tex)...disabled (restricted).
+runsystem(touch w18-test-20201101042.tex)...disabled (restricted).
 
-runsystem(rm -f w18-test-2020110976.tex)...disabled (restricted).
+runsystem(rm -f w18-test-20201101042.tex)...disabled (restricted).
 
 runsystem(rm -f "ukoly.gnuploterrors")...disabled (restricted).
 
@@ -493,30 +493,29 @@ Overfull \hbox (13.3088pt too wide) in paragraph at lines 143--145
 
 [1
 
-] [2]
-Overfull \hbox (21.5872pt too wide) detected at line 304
+] [2] [3]
+Overfull \hbox (21.5872pt too wide) detected at line 319
 []
  []
 
-[3]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 310.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 330.
- [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 330.
+(Font)              <14.4> on input line 325.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 354.
+[4]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 354.
  (./ukoly.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 330.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 330.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 330.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 354.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 354.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 354.
  )
 (\end occurred when \ifx on line 161 was incomplete) 
 Here is how much of TeX's memory you used:
  11830 strings out of 493007
- 175704 string characters out of 6136718
- 280261 words of memory out of 5000000
+ 175705 string characters out of 6136718
+ 281261 words of memory out of 5000000
  15606 multiletter control sequences out of 15000+600000
  57592 words of font info for 83 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 40i,18n,46p,922b,350s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,18n,46p,922b,348s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on ukoly.pdf (4 pages).
