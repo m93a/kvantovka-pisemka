@@ -93,6 +93,68 @@
 
 \section{Mionium v křemíku}
 
+\section{Zadání}
+Mionium je vázaný stav mionu s elektronem, podobá se např. atomu vodíku, lze ho vytvořit např. bombardováním křemíkového krystalu miony. Interakce spinu mionu se spinem elektronu a interakce mionia v základním stavu s krystalem se dá modelovat Hamiltonián
+\begin{gather*}
+    \hat{H} + \hat{E}_0 + \frac{A}{\hbar^2} \hat{\bm{s}}_\mu \cdot \hat{\bm{s}}_e + \frac{D}{\hbar^2} \hat{s}_{\mu 3} \hat{s}_{e 3},
+    \\[10pt]
+    \hat{E}_0 = - \tfrac{1}{2} m_r c^2 \alpha^2 \;\; \hat{1},
+    \\[10pt]
+    \hat{\bm{s}}_\mu = \tfrac{\hbar}{2} \hat{\bm{\sigma}} \otimes \hat{1},
+    \hspace{1em}
+    \hat{\bm{s}}_e = \hat{1} \otimes \tfrac{\hbar}{2} \hat{\bm{\sigma}},
+\end{gather*}
+kde $\bm{\sigma} = (\sigma_1, \sigma_2, \sigma_3)$ jsou Pauliho matice.
+
+\section{Řešení}
+Pauliho matice jsou
+\begin{align*}
+    \sigma_1 = \smat[0.7]{0 & 1\\1 & 0}
+    \hspace{2em}
+    \sigma_2 = \smat[0.7]{0 & - \i\\\i & 0}
+    \hspace{2em}
+    \sigma_3 = \smat[0.7]{1 & 0\\0 & -1}
+\end{align*}
+Přímým dosazením do rovnice Hamiltoniánu tedy dostaneme:
+\begin{align*}
+    E_0 =
+    - \frac{\alpha^{2} c^{2} m_{r}}{2}
+    \smat[0.7]{1 \\ & 1 \\ & & 1 \\ & & & 1}
+    \hspace{3em}
+    \bm{s}_\mu \cdot \bm{s}_e =
+    \frac{\hbar^2}{4}
+    \smat[0.7]{1 & & & \\ & -1 & 2 & \\ & 2 & -1 & \\ & & & 1}
+    \hspace{3em}
+    s_{\mu 3} s_{e 3} =
+    \frac{\hbar^2}{4}
+    \smat[0.7]{1 & & & \\ & -1 &  & \\ &  & -1 & \\ &  &  & 1}
+\end{align*}
+\begin{align*}
+    H = \frac{1}{4}
+    \mat{A + D - 2 \alpha^{2} c^{2} m_{r} & 0 & 0 & 0\\0 & - A - D - 2 \alpha^{2} c^{2} m_{r} & 2 A & 0\\0 & 2 A & - A - D - 2 \alpha^{2} c^{2} m_{r} & 0\\0 & 0 & 0 & A + D - 2 \alpha^{2} c^{2} m_{r}}
+\end{align*}
+Diagonalizujeme-li $H$, získáme
+\begin{gather*}
+    H = V^{-1} H_\textit{diag.} V
+    \\[10pt]
+    V = \mat{0 & - \nicefrac{\oldsqrt{2}}{2} & \nicefrac{\oldsqrt{2}}{2} & 0\\0 & \nicefrac{\oldsqrt{2}}{2} & \nicefrac{\oldsqrt{2}}{2} & 0\\1 & 0 & 0 & 0\\0 & 0 & 0 & 1}
+    \\[10pt]
+    H_\textit{diag.} = \mat{- \frac{3 A}{4} - \frac{D}{4} - \frac{\alpha^{2} c^{2} m_{r}}{2} & 0 & 0 & 0\\0 & \frac{A}{4} - \frac{D}{4} - \frac{\alpha^{2} c^{2} m_{r}}{2} & 0 & 0\\0 & 0 & \frac{A}{4} + \frac{D}{4} - \frac{\alpha^{2} c^{2} m_{r}}{2} & 0\\0 & 0 & 0 & \frac{A}{4} + \frac{D}{4} - \frac{\alpha^{2} c^{2} m_{r}}{2}}
+\end{gather*}
+Na diagonále $H_\textit{diag}$ jsou energie vázaných stavů Hamiltoniánu, sloupce $V$ jsou jim odpovídající stavové vektory~${\ket{\psi_\mu} \otimes \ket{\psi_e}}$.
+
+Jako podúkol máme vyjádřit $\ket{\rightarrow}^{(\mu)}$ v bázi $\{ \ket{\uparrow}^{(\mu)}, \ket{\downarrow}^{(\mu)} \}$. Ze cvičení víme, že těmito \textit{kety} se označují vlastní vektory Pauliho matic:
+\begin{align*}
+    \ket{\rightarrow}^{(\mu)} = \frac{1}{\oldsqrt{2}} \mat{1 \\ 1},
+    \hspace{2em}
+    \ket{\uparrow}^{(\mu)} = \mat{1 \\ 0},
+    \hspace{2em}
+    \ket{\downarrow}^{(\mu)} = \mat{0 \\ 1}.
+\end{align*}
+Vyjádření $\ket{\rightarrow}^{(\mu)}$ v bázi $\{ \ket{\uparrow}^{(\mu)}, \ket{\downarrow}^{(\mu)} \}$ je tedy zřejmě:
+\begin{align*}
+    \ket{\rightarrow}^{(\mu)} = \frac{1}{\oldsqrt{2}} \left(\ket{\uparrow}^{(\mu)} + \ket{\downarrow}^{(\mu)} \right)
+\end{align*}
 
 
 \section{Kvadratický Hamiltonián}
